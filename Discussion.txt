@@ -1,0 +1,42 @@
+SYSC4001 ASSIGNMENT DISCUSSION
+
+Author: Zakaria Ismail - 101143497
+
+----Discussion of test results-----
+
+There were two tests done. They both computed 
+the expected determinant and largest value.
+
+The time to execute was not consistent and varied
+between 1500 and 3000 miroseconds. This is because
+this program is not the only process running on my
+computer; there are other processes for which the CPU
+has to share process execution time.
+
+The time to compute is relatively slow because there
+are print statements, which is computationally slow.
+
+
+----DESCRIPTION OF GOALS OF DESIGN----
+    - Compute determinant of 3x3 matrix using 3 child processes.
+    - Init shared memory
+    - Use semaphores to ensure that child processes don't access
+    shared memory simultaneously
+    - Use signal to wait until all children are killed to end function
+    - Use functions appropiately for a modular and readable design
+
+
+    Design:
+    1. Create shared memory
+    2. Initialize shared memory
+    3. Fork 3 chid processes
+    4. Attach shared memory to all processes
+    5. Compute determinant portion for all processes
+    6. Use semaphore to control loading of data to shared memory
+    7a. Let the parent WAIT until its children are killed before displaying
+        and returning the result (EDIT: waits until all child processes are killed)
+    7b. The child processes will detach from shared memory and then send
+        and then kill itself
+    8. The parent will save and print the result
+    9. The parent will detach and delete shared memory
+    10. The parent will return the result

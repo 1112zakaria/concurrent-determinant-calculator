@@ -1,0 +1,15 @@
+# Extensionless files
+*
+!/**/
+!*.*
+
+#
+*.pdf
+*.zip
+*.tar
+*.docx
+
+# For MacOS
+.DS_Store
+*.dSYM
+
